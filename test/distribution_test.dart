@@ -10,7 +10,7 @@ void main() {
       expect(used[id], equals(null));
       used[id] = true;
     }
-  }, skip: true);
+  });
 
   test('has flat distribution', () {
     const count = 100 * 1000;
@@ -31,5 +31,5 @@ void main() {
       final distribution = (chars[k]! * alphabet.length) / (count * length);
       expect(distribution, closeTo(1, 0.1));
     });
-  }, skip: true);
+  });
 }
