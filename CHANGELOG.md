@@ -1,5 +1,9 @@
 Changelog
 
+## 2.0.1
+
+- Update pubspec topicsm description and repo link
+
 ## 2.0.0
 
 Official Dart 3 support, breaking changes, and new Alphabet API.

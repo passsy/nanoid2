@@ -1,5 +1,5 @@
 name: nanoid2
-version: 2.0.0
+version: 2.0.1
 description: A tiny, secure, URL-friendly, unique string ID generator, nanoid with a pure Dart API.
 repository: https://github.com/passsy/nanoid
 
