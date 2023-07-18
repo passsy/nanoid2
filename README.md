@@ -22,7 +22,8 @@ import 'package:nanoid2/nanoid2.dart';
 
 void main() {
   final id = nanoid(); 
-  // => LXL0J9b-Uj1C0sZH837Fk, 21 characters
+  // => LXL0J9b-Uj1C0sZH837Fk
+  // 21 characters
 }
 ```
 
@@ -33,8 +34,8 @@ import 'package:nanoid2/nanoid2.dart';
 
 void main() {
   final String longId = nanoid(length: 64);
-  longId);
-  // => sTTAY72ZgB3DFE6oyQlJI5hhvkebrlnheY81wzZHIBbqHHswEyw1LV2hHCrUC6bw, 64 characters
+  // => sTTAY72ZgB3DFE6oyQlJI5hhvkebrlnheY81wzZHIBbqHHswEyw1LV2hHCrUC6bw
+  // 64 characters
 }
 ```
 
