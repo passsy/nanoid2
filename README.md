@@ -6,6 +6,7 @@ alt="Nano ID logo by Anton Lovchikov" width="180" height="94">
 [![pub](https://img.shields.io/pub/v/nanoid2.svg)](https://pub.dartlang.org/packages/nanoid2)
 
 Dart implementation of [ai/nanoid](https://github.com/ai/nanoid).
+
 This is a fork of [package:nanoid](https://pub.dev/packages/nanoid) with a more Dart-like API.
 
 ## Install
@@ -89,4 +90,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
-      
