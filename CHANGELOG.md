@@ -2,7 +2,7 @@ Changelog
 
 ## 2.0.1
 
-- Update pubspec topicsm description and repo link
+- Update pubspec topics description and repo link
 
 ## 2.0.0
 
