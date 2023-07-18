@@ -1,11 +1,48 @@
-name: test
-on: [push]
+name: Dart CI
+
+on: [push, pull_request]
+
 jobs:
-  build:
+  test:
+    timeout-minutes: 5
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        version: ["2.12", "2.19", "3.0", "beta"]
+
     container:
-      image: google/dart:latest
+      image: dart:${{ matrix.version }}
+
     steps:
       - uses: actions/checkout@v2
-      - run: pub get
-      - run: pub run test
+      - name: Install dependencies
+        run: dart pub get
+      - name: Run tests
+        run: dart pub run test
+
+  format:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+
+    container:
+      image: dart:stable
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Format
+        run: dart format --set-exit-if-changed --fix .
+
+  lint:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+
+    container:
+      image: dart:stable
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: dart pub get
+      - name: analyze
+        run: dart analyze --fatal-infos .
