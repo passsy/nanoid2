@@ -1,4 +1,4 @@
-include: package:lint/strict.yaml
+include: package:lint/package.yaml
 
 # You might want to exclude auto-generated files from dart analysis
 analyzer:
