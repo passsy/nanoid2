@@ -1,7 +1,8 @@
 name: nanoid2
 version: 2.0.1
 description: A tiny, secure, URL-friendly, unique string ID generator, nanoid with a pure Dart API.
-repository: https://github.com/passsy/nanoid
+repository: https://github.com/passsy/nanoid2
+issue_tracker: https://github.com/passsy/nanoid2/issues
 
 environment:
   sdk: ">=2.12.0 <4.0.0"
