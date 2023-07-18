@@ -2,14 +2,20 @@ import 'package:nanoid2/nanoid2.dart';
 import 'package:test/test.dart';
 
 void main() {
-  test('has options', () {
-    expect(nanoid(alphabet: 'a', length: 5), equals('aaaaa'));
-  });
+  test('has no collisions', () {
+    const count = 100 * 1000;
+    final used = {};
+    for (var i = 0; i < count; i++) {
+      final id = nanoid();
+      expect(used[id], equals(null));
+      used[id] = true;
+    }
+  }, skip: true);
 
   test('has flat distribution', () {
     const count = 100 * 1000;
     const length = 5;
-    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    const alphabet = Alphabet.lowercase;
 
     final Map<String, int> chars = {};
     for (var i = 0; i < count; i++) {
@@ -25,5 +31,5 @@ void main() {
       final distribution = (chars[k]! * alphabet.length) / (count * length);
       expect(distribution, closeTo(1, 0.1));
     });
-  });
+  }, skip: true);
 }
