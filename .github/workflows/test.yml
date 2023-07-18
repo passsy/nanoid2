@@ -42,5 +42,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: dart pub get
       - name: analyze
         run: dart analyze --fatal-infos .
