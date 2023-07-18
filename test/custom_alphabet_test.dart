@@ -1,29 +1,29 @@
+import 'package:nanoid2/nanoid2.dart';
 import 'package:test/test.dart';
-import 'package:nanoid/nanoid.dart';
 
 void main() {
   test('has options', () {
-    expect(customAlphabet('a', 5), equals('aaaaa'));
+    expect(nanoid(alphabet: 'a', length: 5), equals('aaaaa'));
   });
 
   test('has flat distribution', () {
-    var count = 100 * 1000;
-    var length = 5;
-    var alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    const count = 100 * 1000;
+    const length = 5;
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
-    var chars = {};
+    final Map<String, int> chars = {};
     for (var i = 0; i < count; i++) {
-      var id = customAlphabet(alphabet, length);
+      final id = nanoid(alphabet: alphabet, length: length);
       for (var j = 0; j < id.length; j++) {
-        var char = id[j];
+        final char = id[j];
         if (chars[char] == null) chars[char] = 0;
-        chars[char] += 1;
+        chars[char] = chars[char]! + 1;
       }
     }
 
     chars.forEach((k, _) {
-      var distribution = (chars[k] * alphabet.length) / (count * length);
-      expect(distribution, closeTo(1, 1));
+      final distribution = (chars[k]! * alphabet.length) / (count * length);
+      expect(distribution, closeTo(1, 0.1));
     });
   });
 }
