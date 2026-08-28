@@ -63,6 +63,30 @@ Pick the constraint you actually have, then use the length that keeps you at 126
 Rows run from the most to the least entropy per character.
 A smaller alphabet is not weaker, it just needs a longer id to hold the same 126 bits.
 
+### Collisions
+
+Ids collide the way birthdays do.
+With `N` possible ids you get roughly `sqrt(N)` of them before a collision is likely, and every way of phrasing the question lands within a small factor of that.
+For the 21 character default there are 2^126 possible ids, so the first collision is expected after about 1.25 times `sqrt(N)`, which is 12 quintillion ids.
+
+Pick a length from the number of ids you will ever create, not from a time span.
+This table is for the default `url` alphabet, at a one in a million risk of a single collision ever happening.
+
+| Length | Ids you can create | Which is |
+| --- | --- | --- |
+| 6 | 371 | too few to use |
+| 8 | 24 thousand | a hobby project |
+| 10 | 1.5 million | one table in one database |
+| 12 | 97 million | a busy table |
+| 14 | 6 billion | one id every second for 197 years |
+| 16 | 398 billion | a thousand ids a second for 12 years |
+| 21 (default) | 13 quadrillion | a billion ids a day for 36,000 years |
+
+Below 12 characters the numbers get small enough to matter, so check them.
+At the default they are far enough away that nothing you build will reach them.
+
+Shortening the alphabet costs you the same way shortening the id does, so keep the length from the table above and add the characters the `Which alphabet?` table asks for.
+
 ### Custom alphabet
 
 ```dart
