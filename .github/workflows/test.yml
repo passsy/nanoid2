@@ -31,7 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Format
-        run: dart format --set-exit-if-changed --fix .
+        run: dart format --set-exit-if-changed .
 
   lint:
     timeout-minutes: 5
