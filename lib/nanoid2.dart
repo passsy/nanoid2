@@ -119,7 +119,7 @@ abstract class Alphabet {
   static const String base64 = "+/" + alphanumeric;
 
   /// Characters that are valid in a cookie value without quoting or escaping.
-  /// [a-zA-Z0-9] plus `!#$%&'*+-.^_`|~` (77 chars)
+  /// ``[a-zA-Z0-9!#$%&'*+.^_`|~-]`` (77 chars)
   ///
   /// This is the token character set of RFC 7230, a subset of what RFC 6265
   /// allows in a cookie value. The characters RFC 6265 permits on top of these

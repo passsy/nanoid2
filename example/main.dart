@@ -30,12 +30,10 @@ void customAlphabet() {
   print(nanoid(alphabet: Alphabet.alphanumeric)); // [a-zA-Z0-9], 62 chars
   print(nanoid(alphabet: Alphabet.base64)); // [a-zA-Z0-9+/], 64 chars
   print(nanoid(alphabet: Alphabet.base58)); // [1-9A-HJ-NP-Za-km-z], 58 chars
-
-  // Valid in a cookie value without quoting. 77 chars
-  print(nanoid(alphabet: Alphabet.cookieSafe));
-
-  // Crockford's Base32, made to be read and typed by humans. 32 chars
-  print(nanoid(alphabet: Alphabet.crockfordBase32));
+  print(nanoid(
+      alphabet: Alphabet.cookieSafe)); // [a-zA-Z0-9!#$%&'*+.^_`|~-], 77 chars
+  print(nanoid(
+      alphabet: Alphabet.crockfordBase32)); // [0-9A-HJKMNP-TV-Z], 32 chars
 
   // Numbers and english letters without lookalikes: 1, l, I, 0, O, o, u, v, 5, S, s, 2, Z. 49 chars
   print(nanoid(alphabet: Alphabet.noDoppelganger));

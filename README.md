@@ -39,6 +39,30 @@ void main() {
 }
 ```
 
+### Which alphabet?
+
+Every alphabet trades away characters to gain some property, and pays for it in entropy per character.
+Pick the constraint you actually have, then use the length that keeps you at 126 bits, the same collision resistance as UUID v4 and as the 21 character default.
+
+| Alphabet | Characters | Bits per char | Length for 126 bits | You need |
+| --- | --- | --- | --- | --- |
+| `cookieSafe` | ``[a-zA-Z0-9!#$%&'*+.^_`\|~-]``, 77 chars | 6.27 | 21 | To put the id in a cookie value |
+| `url` | `[a-zA-Z0-9_-]`, 64 chars | 6.00 | 21 | Nothing in particular, this is the default |
+| `base64` | `[a-zA-Z0-9+/]`, 64 chars | 6.00 | 21 | The classic Base64 symbols `+/` instead of `_-` |
+| `alphanumeric` | `[a-zA-Z0-9]`, 62 chars | 5.95 | 22 | Letters and digits, no symbols at all |
+| `base58` | `[1-9A-HJ-NP-Za-km-z]`, 58 chars | 5.86 | 22 | A short id for a URL that nobody dictates |
+| `noDoppelganger` | `[346-9A-HJ-NP-RT-Ya-kmnp-rtw-z]`, 49 chars | 5.61 | 23 | No lookalikes, but vowels are fine |
+| `noDoppelgangerSafe` | `[6-9B-DF-HJ-NP-RTWb-df-hjkmnp-rtwz]`, 36 chars | 5.17 | 25 | An id that can never resemble a word |
+| `crockfordBase32` | `[0-9A-HJKMNP-TV-Z]`, 32 chars | 5.00 | 26 | An id that survives being read out loud or typed back in |
+| `lowercase` | `[a-z]`, 26 chars | 4.70 | 27 | Case-insensitive storage, such as a hostname or a bucket name |
+| `uppercase` | `[A-Z]`, 26 chars | 4.70 | 27 | The same, where the surrounding text is uppercase |
+| `hexadecimalLowercase` | `[0-9a-f]`, 16 chars | 4.00 | 32 | To interoperate with something that parses hex |
+| `hexadecimalUppercase` | `[0-9A-F]`, 16 chars | 4.00 | 32 | The same, where the reader expects uppercase hex |
+| `numbers` | `[0-9]`, 10 chars | 3.32 | 38 | Digits only, for a PIN or a numeric code |
+
+Rows run from the most to the least entropy per character.
+A smaller alphabet is not weaker, it just needs a longer id to hold the same 126 bits.
+
 ### Custom alphabet
 
 ```dart
@@ -59,12 +83,8 @@ void main() {
   nanoid(alphabet: Alphabet.alphanumeric); // [a-zA-Z0-9], 62 chars
   nanoid(alphabet: Alphabet.base64); // [a-zA-Z0-9+/], 64 chars
   nanoid(alphabet: Alphabet.base58); // [1-9A-HJ-NP-Za-km-z], 58 chars
-
-  // Valid in a cookie value without quoting. 77 chars
-  nanoid(alphabet: Alphabet.cookieSafe);
-
-  // Crockford's Base32, made to be read and typed by humans. 32 chars
-  nanoid(alphabet: Alphabet.crockfordBase32);
+  nanoid(alphabet: Alphabet.cookieSafe); // [a-zA-Z0-9!#$%&'*+.^_`|~-], 77 chars
+  nanoid(alphabet: Alphabet.crockfordBase32); // [0-9A-HJKMNP-TV-Z], 32 chars
 
   // Numbers and english letters without lookalikes: 1, l, I, 0, O, o, u, v, 5, S, s, 2, Z. 49 chars
   nanoid(alphabet: Alphabet.noDoppelganger);
@@ -75,7 +95,7 @@ void main() {
 
 ## License
 
-```
+```text
 MIT License
 
 Copyright (c) 2023 Pascal Welsch, Rongjian Zhang, Andrey Sitnik
