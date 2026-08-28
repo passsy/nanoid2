@@ -66,7 +66,7 @@ A smaller alphabet is not weaker, it just needs a longer id to hold the same 126
 ### Custom alphabet
 
 ```dart
-import 'package:nanoid/nanoid.dart';
+import 'package:nanoid2/nanoid2.dart';
 
 void main() {
   // use your own alphabets
