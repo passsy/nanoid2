@@ -40,11 +40,11 @@ String nanoid({
     throw ArgumentError.value(
       length,
       "length",
-      "Length must be greater than 2",
+      "Length must be at least 2",
     );
   }
   if (length > 255) {
-    throw ArgumentError.value(length, "length", "Length must be less than 255");
+    throw ArgumentError.value(length, "length", "Length must be at most 255");
   }
   int i = length;
   if (alphabet != null && alphabet.isEmpty) {

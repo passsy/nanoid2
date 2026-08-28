@@ -22,12 +22,32 @@ void main() {
   test('requires min length of 2', () {
     expect(() => nanoid(length: 0), throwsArgumentError);
     expect(() => nanoid(length: 1), throwsArgumentError);
+    expect(
+      () => nanoid(length: 1),
+      throwsA(
+        isArgumentError.having(
+          (it) => it.message,
+          'message',
+          'Length must be at least 2',
+        ),
+      ),
+    );
     nanoid(length: 2);
   });
 
   test('max length is 255', () {
     nanoid(length: 255);
     expect(() => nanoid(length: 256), throwsArgumentError);
+    expect(
+      () => nanoid(length: 256),
+      throwsA(
+        isArgumentError.having(
+          (it) => it.message,
+          'message',
+          'Length must be at most 255',
+        ),
+      ),
+    );
   });
 
   test('custom alphabet', () {
