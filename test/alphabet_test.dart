@@ -13,6 +13,27 @@ void main() {
     expectCharacters(62, Alphabet.alphanumeric);
     expectCharacters(64, Alphabet.url);
     expectCharacters(64, Alphabet.base64);
+    expectCharacters(32, Alphabet.crockfordBase32);
+    expectCharacters(58, Alphabet.base58);
+    expectCharacters(77, Alphabet.cookieSafe);
+  });
+
+  test('crockfordBase32 excludes lookalikes I, L, O and the letter U', () {
+    for (final excluded in ['I', 'L', 'O', 'U']) {
+      expect(Alphabet.crockfordBase32, isNot(contains(excluded)));
+    }
+  });
+
+  test('cookieSafe excludes what needs quoting in a cookie value', () {
+    for (final excluded in [' ', '"', ',', ';', r'\', '(', ')', '/', '@']) {
+      expect(Alphabet.cookieSafe, isNot(contains(excluded)));
+    }
+  });
+
+  test('base58 excludes lookalikes 0, O, I and l', () {
+    for (final excluded in ['0', 'O', 'I', 'l']) {
+      expect(Alphabet.base58, isNot(contains(excluded)));
+    }
   });
 }
 

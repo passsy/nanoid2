@@ -1,5 +1,9 @@
 Changelog
 
+## Unreleased
+
+- Add `Alphabet.crockfordBase32`, `Alphabet.base58` and `Alphabet.cookieSafe`
+
 ## 2.0.1
 
 - Update pubspec topics description and repo link
