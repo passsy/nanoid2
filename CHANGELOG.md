@@ -2,7 +2,7 @@ Changelog
 
 ## Unreleased
 
-- Add `Alphabet.crockfordBase32` and `Alphabet.base58`
+- Add `Alphabet.crockfordBase32`, `Alphabet.base58` and `Alphabet.cookieSafe`
 
 ## 2.0.1
 
