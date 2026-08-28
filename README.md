@@ -67,10 +67,14 @@ A smaller alphabet is not weaker, it just needs a longer id to hold the same 126
 
 Ids collide the way birthdays do.
 With `N` possible ids you get roughly `sqrt(N)` of them before a collision is likely, and every way of phrasing the question lands within a small factor of that.
-For the 21 character default there are 2^126 possible ids, so the first collision is expected after about 1.25 times `sqrt(N)`, which is 12 quintillion ids.
-
 Pick a length from the number of ids you will ever create, not from a time span.
-This table is for the default `url` alphabet, at a one in a million risk of a single collision ever happening.
+
+![Ids you can create at each length, for four alphabet sizes, before a one in a million chance of a single collision](https://raw.githubusercontent.com/passsy/nanoid2/main/doc/collision_risk.svg)
+
+Both axes matter: a longer id buys you more, and so does a larger alphabet.
+A digits only id has to be 1.8 times as long as a `url` id to be equally safe, which is why the `numbers` line sits so far below.
+
+The same numbers for the default `url` alphabet, to read off exactly:
 
 | Length | Ids you can create | Which is |
 | --- | --- | --- |
@@ -84,8 +88,6 @@ This table is for the default `url` alphabet, at a one in a million risk of a si
 
 Below 12 characters the numbers get small enough to matter, so check them.
 At the default they are far enough away that nothing you build will reach them.
-
-Shortening the alphabet costs you the same way shortening the id does, so keep the length from the table above and add the characters the `Which alphabet?` table asks for.
 
 ### Custom alphabet
 
