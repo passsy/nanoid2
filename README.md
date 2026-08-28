@@ -72,7 +72,7 @@ Pick a length from the number of ids you will ever create, not from a time span.
 ![Ids you can create at each length, for four alphabet sizes, before a one in a million chance of a single collision](https://raw.githubusercontent.com/passsy/nanoid2/main/doc/collision_risk.svg)
 
 Both axes matter: a longer id buys you more, and so does a larger alphabet.
-A digits only id has to be 1.8 times as long as a `url` id to be equally safe, which is why the `numbers` line sits so far below.
+A digits only id has to be 1.8 times as long as a `url` id to be equally safe, which is why `numbers` sits so far below.
 
 The same numbers for the default `url` alphabet, to read off exactly:
 
