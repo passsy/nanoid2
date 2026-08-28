@@ -30,8 +30,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: dart pub get
       - name: Format
-        run: dart format --set-exit-if-changed --fix .
+        run: dart format --set-exit-if-changed .
 
   lint:
     timeout-minutes: 5

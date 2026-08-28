@@ -9,7 +9,7 @@ import 'dart:math';
 ///
 /// Examples:
 ///
-/// ```
+/// ```text
 /// BGmaV2KoFx0Ar2yS6zMDc
 /// TZGlaZw38c43IILQQ-Jxc
 /// n_vyOfT-Q9hwWyYQZSYop
