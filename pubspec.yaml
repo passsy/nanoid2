@@ -16,3 +16,4 @@ topics:
   - uuid
   - id
   - random
+  - nanoid
