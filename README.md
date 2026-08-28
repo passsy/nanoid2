@@ -69,10 +69,14 @@ Ids collide the way birthdays do.
 With `N` possible ids you get roughly `sqrt(N)` of them before a collision is likely, and every way of phrasing the question lands within a small factor of that.
 Pick a length from the number of ids you will ever create, not from a time span.
 
-![Ids you can create at each length, for four alphabet sizes, before a one in a million chance of a single collision](https://raw.githubusercontent.com/passsy/nanoid2/main/doc/collision_risk.svg)
+![Ids you can create at each length, for four alphabet sizes, compared against a UUIDv4, before a one in a million chance of a single collision](https://raw.githubusercontent.com/passsy/nanoid2/main/doc/collision_risk.svg)
 
 Both axes matter: a longer id buys you more, and so does a larger alphabet.
 A digits only id has to be 1.8 times as long as a `url` id to be equally safe, which is why `numbers` sits so far below.
+
+The dashed line is a UUIDv4, which spends 36 characters on 122 random bits.
+The default 21 characters is the shortest `url` id that clears it, and it clears it by 4x while being 15 characters shorter.
+That is where the default comes from.
 
 The same numbers for the default `url` alphabet, to read off exactly:
 

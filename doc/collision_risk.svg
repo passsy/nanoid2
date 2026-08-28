@@ -58,6 +58,9 @@
 <text x="637.6" y="455" font-size="11" font-weight="400" fill="#52514e" text-anchor="middle">23</text>
 <text x="670.0" y="455" font-size="11" font-weight="400" fill="#52514e" text-anchor="middle">24</text>
 <text x="378.0" y="479" font-size="12.5" fill="#52514e" text-anchor="middle">id length in characters</text>
+<line x1="86" y1="148.2" x2="670" y2="148.2" stroke="#8a8983" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="99" y="132.2" font-size="12.5" font-weight="600" fill="#0b0b0b">UUIDv4</text>
+<text x="99" y="145.2" font-size="11" fill="#52514e">36 characters, 122 random bits</text>
 <circle cx="86.0" cy="386.7" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"/>
 <circle cx="118.4" cy="370.0" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"/>
 <circle cx="150.9" cy="353.4" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"/>
