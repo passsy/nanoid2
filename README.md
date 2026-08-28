@@ -69,7 +69,7 @@ Ids collide the way birthdays do.
 With `N` possible ids you get roughly `sqrt(N)` of them before a collision is likely, and every way of phrasing the question lands within a small factor of that.
 Pick a length from the number of ids you will ever create, not from a time span.
 
-![Ids you can create at each length, for four alphabet sizes, compared against a UUIDv4, before a one in a million chance of a single collision](https://raw.githubusercontent.com/passsy/nanoid2/main/doc/collision_risk.svg)
+![Ids you can create at each length, for four alphabet sizes, marked with a UUIDv4 and a YouTube video id, before a one in a million chance of a single collision](https://raw.githubusercontent.com/passsy/nanoid2/main/doc/collision_risk.svg)
 
 Both axes matter: a longer id buys you more, and so does a larger alphabet.
 A digits only id has to be 1.8 times as long as a `url` id to be equally safe, which is why `numbers` sits so far below.
@@ -77,6 +77,21 @@ A digits only id has to be 1.8 times as long as a `url` id to be equally safe, w
 The dashed line is a UUIDv4, which spends 36 characters on 122 random bits.
 The default 21 characters is the shortest `url` id that clears it, and it clears it by 4x while being 15 characters shorter.
 That is where the default comes from.
+
+Some ids you already know, measured the same way:
+
+| Id | What it is | Ids before a 1 in a million risk |
+| --- | --- | --- |
+| git short sha | 7 hex characters | 23 |
+| YouTube video id | 11 characters of the `url` alphabet | 12 million |
+| UUIDv4 | 122 random bits, written as 36 characters | 3.3 quadrillion |
+| nanoid default | 21 characters of the `url` alphabet | 13 quadrillion |
+
+git and YouTube both hold far more ids than their row allows, because neither leans on randomness alone.
+git keeps the full 160 bit hash and only abbreviates for display, lengthening the prefix once it turns ambiguous.
+YouTube is billions of videos past its own line, so it has to be checking.
+Every number here is for minting an id blind and never looking.
+Writing into a column with a unique index and retrying on conflict buys you a shorter id than the table allows.
 
 The same numbers for the default `url` alphabet, to read off exactly:
 

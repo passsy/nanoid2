@@ -149,6 +149,9 @@
 <circle cx="692" cy="265.4" r="4.5" fill="#eda100"/>
 <text x="703" y="264.4" font-size="12.5" font-weight="600" fill="#0b0b0b">numbers</text>
 <text x="703" y="278.4" font-size="11" fill="#52514e">10 characters</text>
+<circle cx="248.2" cy="303.5" r="8.5" fill="none" stroke="#2a78d6" stroke-width="2"/>
+<text x="233.2" y="300.5" font-size="12" font-weight="600" fill="#0b0b0b" text-anchor="end">a YouTube video id</text>
+<text x="233.2" y="314.5" font-size="11" fill="#52514e" text-anchor="end">11 chars, same alphabet</text>
 <circle cx="572.7" cy="137.1" r="8.5" fill="none" stroke="#2a78d6" stroke-width="2"/>
 <line x1="572.7" y1="125.1" x2="546.7" y2="97.1" stroke="#2a78d6" stroke-width="1.5"/>
 <text x="542.7" y="91.1" font-size="12" font-weight="600" fill="#0b0b0b" text-anchor="end">the default</text>
