@@ -58,6 +58,10 @@ void main() {
   nanoid(alphabet: Alphabet.uppercase); // [A-Z], 26 chars
   nanoid(alphabet: Alphabet.alphanumeric); // [a-zA-Z0-9], 62 chars
   nanoid(alphabet: Alphabet.base64); // [a-zA-Z0-9+/], 64 chars
+  nanoid(alphabet: Alphabet.base58); // [1-9A-HJ-NP-Za-km-z], 58 chars
+
+  // Crockford's Base32, made to be read and typed by humans. 32 chars
+  nanoid(alphabet: Alphabet.crockfordBase32);
 
   // Numbers and english letters without lookalikes: 1, l, I, 0, O, o, u, v, 5, S, s, 2, Z. 49 chars
   nanoid(alphabet: Alphabet.noDoppelganger);

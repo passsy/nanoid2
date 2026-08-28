@@ -117,4 +117,22 @@ abstract class Alphabet {
 
   /// Base64 characters [a-zA-Z0-9+/] (64 chars)
   static const String base64 = "+/" + alphanumeric;
+
+  /// Crockford's Base32, uppercase letters and numbers without the lookalikes
+  /// I, L and O, and without U. [0-9A-HJKMNP-TV-Z] (32 chars)
+  ///
+  /// Made to be read and typed by humans, for example when an id is written
+  /// down or read out loud. U is left out so that generated ids are less
+  /// likely to spell obscene words.
+  ///
+  /// See https://www.crockford.com/base32.html
+  static const String crockfordBase32 = numbers + "ABCDEFGHJKMNPQRSTVWXYZ";
+
+  /// Base58 as used by Bitcoin and IPFS. Letters and numbers without the
+  /// lookalikes 0, O, I and l. [1-9A-HJ-NP-Za-km-z] (58 chars)
+  ///
+  /// Case-sensitive and shorter than [crockfordBase32] for the same entropy,
+  /// which makes it a common choice for ids that end up in URLs.
+  static const String base58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZ"
+      "abcdefghijkmnopqrstuvwxyz";
 }
