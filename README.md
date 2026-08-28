@@ -63,6 +63,51 @@ Pick the constraint you actually have, then use the length that keeps you at 126
 Rows run from the most to the least entropy per character.
 A smaller alphabet is not weaker, it just needs a longer id to hold the same 126 bits.
 
+### Collisions
+
+Ids collide the way birthdays do.
+With `N` possible ids you get roughly `sqrt(N)` of them before a collision is likely, and every way of phrasing the question lands within a small factor of that.
+Pick a length from the number of ids you will ever create, not from a time span.
+
+![Ids you can create at each length, for four alphabet sizes, marked with a UUIDv4 and a YouTube video id, before a one in a million chance of a single collision](https://raw.githubusercontent.com/passsy/nanoid2/main/doc/collision_risk.svg)
+
+Both axes matter: a longer id buys you more, and so does a larger alphabet.
+A digits only id has to be 1.8 times as long as a `url` id to be equally safe, which is why `numbers` sits so far below.
+
+The dashed line is a UUIDv4, which spends 36 characters on 122 random bits.
+The default 21 characters is the shortest `url` id that clears it, and it clears it by 4x while being 15 characters shorter.
+That is where the default comes from.
+
+Some ids you already know, measured the same way:
+
+| Id | What it is | Ids before a 1 in a million risk |
+| --- | --- | --- |
+| git short sha | 7 hex characters | 23 |
+| YouTube video id | 11 characters of the `url` alphabet | 12 million |
+| UUIDv4 | 122 random bits, written as 36 characters | 3.3 quadrillion |
+| nanoid default | 21 characters of the `url` alphabet | 13 quadrillion |
+
+git and YouTube both hold far more ids than their row allows, because neither leans on randomness alone.
+git keeps the full 160 bit hash and only abbreviates for display, lengthening the prefix once it turns ambiguous.
+YouTube is billions of videos past its own line, so it has to be checking.
+Every number here is for minting an id blind and never looking.
+Writing into a column with a unique index and retrying on conflict buys you a shorter id than the table allows.
+
+The same numbers for the default `url` alphabet, to read off exactly:
+
+| Length | Ids you can create | Which is |
+| --- | --- | --- |
+| 6 | 371 | too few to use |
+| 8 | 24 thousand | a hobby project |
+| 10 | 1.5 million | one table in one database |
+| 12 | 97 million | a busy table |
+| 14 | 6 billion | one id every second for 197 years |
+| 16 | 398 billion | a thousand ids a second for 12 years |
+| 21 (default) | 13 quadrillion | a billion ids a day for 36,000 years |
+
+Below 12 characters the numbers get small enough to matter, so check them.
+At the default they are far enough away that nothing you build will reach them.
+
 ### Custom alphabet
 
 ```dart
