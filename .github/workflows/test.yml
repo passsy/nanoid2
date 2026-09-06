@@ -7,19 +7,17 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        version: ["2.12", "2.19", "3.0", "beta"]
-
     container:
-      image: dart:${{ matrix.version }}
+      image: dart:stable
 
     steps:
       - uses: actions/checkout@v2
+      - name: Dart version
+        run: dart --version
       - name: Install dependencies
         run: dart pub get
       - name: Run tests
-        run: dart pub run test
+        run: dart test
 
   format:
     timeout-minutes: 5
@@ -30,10 +28,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Dart version
+        run: dart --version
       - name: Install dependencies
         run: dart pub get
       - name: Format
-        run: dart format --set-exit-if-changed .
+        run: dart format --output=none --set-exit-if-changed .
 
   lint:
     timeout-minutes: 5
@@ -44,6 +44,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Dart version
+        run: dart --version
       - name: Install dependencies
         run: dart pub get
       - name: analyze
