@@ -138,6 +138,30 @@ void main() {
 }
 ```
 
+## Contributing
+
+Use the latest stable Dart SDK for development. Install or update Dart using the
+[official instructions](https://dart.dev/get-dart). A Flutter installation can
+bundle an older Dart SDK, so check `dart --version` before running the checks.
+
+Run the same checks as CI from the repository root:
+
+```sh
+dart --version
+dart pub get
+dart analyze --fatal-infos .
+dart format --output=none --set-exit-if-changed .
+dart test
+```
+
+To apply formatting changes, run `dart format .`.
+
+Tests, linting, formatting, and coverage run on `dart:stable` in CI. This pure Dart
+package follows stable releases rather than pinning an older development SDK or
+running nightly prerelease jobs. The SDK range in `pubspec.yaml` describes package
+compatibility; it does not select the development SDK. CI validates latest stable,
+not every version allowed by that range.
+
 ## License
 
 ```text
